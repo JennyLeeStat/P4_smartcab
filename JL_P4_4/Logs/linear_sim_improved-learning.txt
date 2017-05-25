@@ -1,0 +1,2308 @@
+/-----------------------------------------
+| State-action rewards from Q-Learning
+\-----------------------------------------
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'left'})
+ -- forward : -1310.25
+ -- right : 12.04
+ -- None : 1154488490859365.00
+ -- left : -21846.75
+
+('right', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'right'})
+ -- forward : 208999.55
+ -- right : 15166255337830023168.00
+ -- None : -57875.87
+ -- left : 7974.18
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'left'})
+ -- forward : -4.65
+ -- right : 6.72
+ -- None : 738.41
+ -- left : -66.10
+
+('left', {'light': 'red', 'oncoming': None, 'right': None, 'left': None})
+ -- forward : -130202111063086660145721507120419242411984945693568532480.00
+ -- right : 402403899714055434654756920084073314171705011449593393274919790643307978673395189320001524509200610191456087033468427721627266983355638401797580821245527283667953053513878053930218230246718631907479203849982706153410449637376.00
+ -- None : 28856934339001561277788656884114624129077771941010836622934016.00
+ -- left : -37342806185483057144604749989260354937640979220055106997190656.00
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'right'})
+ -- forward : 1.43
+ -- right : 4.22
+ -- None : -2.97
+ -- left : 0.00
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': None})
+ -- forward : 30504118582189.34
+ -- right : 3957.09
+ -- None : 1953.93
+ -- left : 1671.27
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'right'})
+ -- forward : -40.75
+ -- right : 139.42
+ -- None : 4.01
+ -- left : -23.40
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'left'})
+ -- forward : 78.43
+ -- right : 1.73
+ -- None : -11.53
+ -- left : -25.52
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'left'})
+ -- forward : -5.22
+ -- right : 0.00
+ -- None : 6.42
+ -- left : 0.00
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'right'})
+ -- forward : 3.27
+ -- right : 173620.29
+ -- None : -124.92
+ -- left : 8.29
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': None})
+ -- forward : -2963.57
+ -- right : 30094195242.96
+ -- None : 19060.42
+ -- left : -23037.47
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'left'})
+ -- forward : 26.20
+ -- right : 184586.64
+ -- None : -49.14
+ -- left : 8.90
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': None})
+ -- forward : -841.69
+ -- right : 276070.59
+ -- None : 3.64
+ -- left : -5102.33
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'left'})
+ -- forward : 1406.02
+ -- right : 2387.84
+ -- None : 137.77
+ -- left : 456678888107.93
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'forward'})
+ -- forward : 0.00
+ -- right : 16.54
+ -- None : 0.00
+ -- left : -9.98
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'left'})
+ -- forward : 4338.40
+ -- right : 780593214556868706304.00
+ -- None : -2224244.80
+ -- left : 486230.73
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': None})
+ -- forward : -7799.71
+ -- right : 30987081.84
+ -- None : 96.77
+ -- left : -648.77
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'left'})
+ -- forward : -3392.02
+ -- right : 108855056101.88
+ -- None : 1003.61
+ -- left : -39386.38
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': None})
+ -- forward : -513472557130753034699866636288.00
+ -- right : 432645338537289762538393371148288.00
+ -- None : 886378722513496692961934326950255606000678561793515387325122527450631476544708646149813780208758259112157677410575957418063376282931256962322530304.00
+ -- left : -12827123565781459653127878686581719040.00
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'right'})
+ -- forward : -543.64
+ -- right : 33954.54
+ -- None : 8.64
+ -- left : -359.52
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'left'})
+ -- forward : -636.50
+ -- right : 3237.64
+ -- None : 2.10
+ -- left : -162.33
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'left'})
+ -- forward : -158.35
+ -- right : 6.47
+ -- None : 37654.61
+ -- left : -861.15
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'right'})
+ -- forward : -0.07
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'forward'})
+ -- forward : -20.15
+ -- right : 0.00
+ -- None : 0.00
+ -- left : 0.00
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'left'})
+ -- forward : 1.94
+ -- right : 24571.89
+ -- None : 0.00
+ -- left : -208.35
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'left'})
+ -- forward : 2.75
+ -- right : 43.56
+ -- None : -11.38
+ -- left : -82.30
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'forward'})
+ -- forward : 2369813.55
+ -- right : 8.63
+ -- None : -89.66
+ -- left : -1160.06
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'forward'})
+ -- forward : 9538.85
+ -- right : 4.53
+ -- None : -36.52
+ -- left : -132.37
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'left'})
+ -- forward : 867318532483760384.00
+ -- right : 24432.87
+ -- None : -15487.90
+ -- left : 5539.46
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'left'})
+ -- forward : -816.99
+ -- right : 214719343879.96
+ -- None : 2367.39
+ -- left : -1368.52
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'right'})
+ -- forward : 4.33
+ -- right : 0.32
+ -- None : 0.00
+ -- left : 0.00
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'forward'})
+ -- forward : -17282807.89
+ -- right : -777525.01
+ -- None : 39804934228439285760.00
+ -- left : -2264461.41
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': None})
+ -- forward : -11305043670.09
+ -- right : 474794.89
+ -- None : 2919226191446284830822771982336.00
+ -- left : -1473492139.52
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'forward'})
+ -- forward : 35.54
+ -- right : 2860271438.08
+ -- None : -24286.24
+ -- left : -2541.42
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': None})
+ -- forward : 5.33
+ -- right : 73759.27
+ -- None : -21.55
+ -- left : -24.65
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'right'})
+ -- forward : 0.00
+ -- right : 11.03
+ -- None : -12.12
+ -- left : 0.00
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'forward'})
+ -- forward : 0.00
+ -- right : -10.01
+ -- None : 2.39
+ -- left : 0.00
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': None})
+ -- forward : 8.89
+ -- right : 4266972.07
+ -- None : -692.07
+ -- left : -320.48
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': None})
+ -- forward : 9044566565903652.00
+ -- right : 2427.49
+ -- None : -1557.31
+ -- left : 5873.47
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'right'})
+ -- forward : 243499.70
+ -- right : 40.80
+ -- None : -116.43
+ -- left : -758.89
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'left'})
+ -- forward : 0.64
+ -- right : 1.83
+ -- None : 0.00
+ -- left : 0.00
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'forward'})
+ -- forward : -420.28
+ -- right : -207.27
+ -- None : 484695.98
+ -- left : -5175.18
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'right'})
+ -- forward : 0.63
+ -- right : 0.00
+ -- None : -6.52
+ -- left : -9.54
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'left'})
+ -- forward : -164.43
+ -- right : 0.99
+ -- None : 381.17
+ -- left : -41.62
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'forward'})
+ -- forward : 921.37
+ -- right : 6.47
+ -- None : -11.36
+ -- left : -46.51
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': None})
+ -- forward : -829215.10
+ -- right : 49287957791971532800.00
+ -- None : 1435.94
+ -- left : -376344.50
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'left'})
+ -- forward : 1445.10
+ -- right : 0.00
+ -- None : -5.63
+ -- left : -26.03
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'forward'})
+ -- forward : -49.97
+ -- right : 0.00
+ -- None : 557.38
+ -- left : -96.17
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': None})
+ -- forward : 5773.52
+ -- right : 5.34
+ -- None : -88.41
+ -- left : -131.84
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': None})
+ -- forward : 194861419138443414339584.00
+ -- right : 174555336441700417536.00
+ -- None : 2265429630737580701161418426093118429708870703460416992724061141217718722375386886040105260526728555713669574267240448.00
+ -- left : 759341781735791327791022080.00
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'right'})
+ -- forward : 0.00
+ -- right : 49.78
+ -- None : 0.00
+ -- left : 0.00
+
+('forward', {'light': 'red', 'oncoming': None, 'right': None, 'left': None})
+ -- forward : -687285716202493493486527901433246832574595072.00
+ -- right : 6572556596847359284431255730165691834245348685004568482034955692229896809643619079576672317125437256217880771569418719500600179542179957773180337139205320889341757962124735772040578453024804731269940618437838255260451894607869089767081933939933184.00
+ -- None : 675939272660759959157254448810622916123626850746368.00
+ -- left : -39260035498182809681250380792742305984807301006462287872.00
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'left'})
+ -- forward : -14747.59
+ -- right : 23938750828953.23
+ -- None : 218.96
+ -- left : -9770.82
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'forward'})
+ -- forward : -49.74
+ -- right : -131.99
+ -- None : 8590.01
+ -- left : -420.51
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': None})
+ -- forward : -2922.71
+ -- right : 43.31
+ -- None : 9206671.51
+ -- left : -2852.79
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': None})
+ -- forward : 15803727992729190144365691591649774272512.00
+ -- right : 1064035075.85
+ -- None : -3382748941252.30
+ -- left : -219576948462.62
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'left'})
+ -- forward : -163.08
+ -- right : 3.51
+ -- None : 10031.11
+ -- left : -50.62
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'right'})
+ -- forward : 1.87
+ -- right : 995.43
+ -- None : -6.69
+ -- left : -130.34
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'right'})
+ -- forward : 1.86
+ -- right : 12.29
+ -- None : -5.33
+ -- left : -9.56
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'right'})
+ -- forward : -38.34
+ -- right : 0.67
+ -- None : 456.32
+ -- left : -163.81
+
+('left', {'light': 'green', 'oncoming': None, 'right': None, 'left': None})
+ -- forward : 2132632051486846366280629176313234411487232.00
+ -- right : 407891409944003287976782598183008196907499520.00
+ -- None : -112151516614270745907554815583607467278336.00
+ -- left : 61885192017013516680826096205992099112062341556843489947553922962979701465968474677670495906690949804976929553678399880092327033279446896956100225917830165430272.00
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'forward'})
+ -- forward : 41654.73
+ -- right : 14.95
+ -- None : 3.97
+ -- left : 1.88
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'right'})
+ -- forward : 1.33
+ -- right : 0.00
+ -- None : -6.09
+ -- left : -24.68
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'left'})
+ -- forward : -98.78
+ -- right : 2.20
+ -- None : 2579824.32
+ -- left : -979.93
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'right'})
+ -- forward : -40.72
+ -- right : 2.09
+ -- None : 1735.17
+ -- left : -61.73
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'forward'})
+ -- forward : 23028.03
+ -- right : 38912.54
+ -- None : -445645.23
+ -- left : 50314486270655966740480.00
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': None})
+ -- forward : -160.98
+ -- right : -0.10
+ -- None : 677458.67
+ -- left : -643.14
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': None})
+ -- forward : 1784083853.81
+ -- right : 3512267820628937088327100438829494867853312.00
+ -- None : -621128355286098.88
+ -- left : -41997313649504.74
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': None})
+ -- forward : 5.69
+ -- right : 1132050.76
+ -- None : -10.22
+ -- left : -47.29
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': None})
+ -- forward : -3953859039651746021376.00
+ -- right : 246054336612371251217068551353108033719373256656469733343126476890522517504.00
+ -- None : 135908420724930624.00
+ -- left : -1172484535081331195904.00
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'right'})
+ -- forward : -23.74
+ -- right : 3.75
+ -- None : 6958.19
+ -- left : 0.00
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'forward'})
+ -- forward : 705.75
+ -- right : 1.26
+ -- None : -11.77
+ -- left : -9.87
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': None})
+ -- forward : -157.00
+ -- right : 52517981.80
+ -- None : 46.93
+ -- left : -234.29
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'forward'})
+ -- forward : 1.61
+ -- right : 0.00
+ -- None : 0.21
+ -- left : 118.82
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'right'})
+ -- forward : 724.99
+ -- right : 4.64
+ -- None : -2.83
+ -- left : 1.16
+
+('left', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'left'})
+ -- forward : 11026035633.66
+ -- right : 276243807.60
+ -- None : -2239789444.88
+ -- left : 143174725360350388820057248249562529792.00
+
+('left', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'forward'})
+ -- forward : 667073710631.35
+ -- right : 2433260726.03
+ -- None : -23471681597074.87
+ -- left : 4362618047928806801378328448892497703198523392.00
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'right'})
+ -- forward : 0.86
+ -- right : 639.98
+ -- None : -10.39
+ -- left : 0.00
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'forward'})
+ -- forward : 2.79
+ -- right : 155.57
+ -- None : -2.07
+ -- left : -48.35
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'left'})
+ -- forward : 69507.56
+ -- right : 3.49
+ -- None : -180.60
+ -- left : -209.90
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'right'})
+ -- forward : -4.69
+ -- right : 0.00
+ -- None : 4.16
+ -- left : 0.00
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'forward'})
+ -- forward : 63.23
+ -- right : 1.25
+ -- None : 0.00
+ -- left : -10.07
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'forward'})
+ -- forward : 9784877.70
+ -- right : 4.26
+ -- None : -123.81
+ -- left : -80.28
+
+('forward', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'left'})
+ -- forward : -2736573731411.75
+ -- right : 1011560.72
+ -- None : 149945126913862206316470699337451166498816.00
+ -- left : -384375117.74
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'forward'})
+ -- forward : 820.82
+ -- right : 1022.81
+ -- None : 60304391311893.27
+ -- left : 13395.01
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': None})
+ -- forward : -1928.19
+ -- right : 20488965.43
+ -- None : 69.21
+ -- left : -420.41
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'left'})
+ -- forward : 8263.46
+ -- right : 1603.49
+ -- None : 12633.72
+ -- left : 8228172167787383808.00
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': None})
+ -- forward : 16.60
+ -- right : 550691699.82
+ -- None : -199.17
+ -- left : -1142.12
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'left'})
+ -- forward : 78.09
+ -- right : 17960627.16
+ -- None : -2241.01
+ -- left : -753.36
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': None})
+ -- forward : 12.52
+ -- right : 78389029.15
+ -- None : -118.73
+ -- left : -323.07
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'right'})
+ -- forward : -11.99
+ -- right : -0.22
+ -- None : 10.11
+ -- left : -5.48
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'right'})
+ -- forward : -162.02
+ -- right : 2.19
+ -- None : 84.62
+ -- left : -95.61
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': None})
+ -- forward : 14316508290238796.00
+ -- right : 299560.52
+ -- None : -24667.95
+ -- left : -67006.73
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'left'})
+ -- forward : -5174.67
+ -- right : 492.26
+ -- None : 1842983892005.53
+ -- left : -39596.02
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'right'})
+ -- forward : 2.32
+ -- right : 66860.38
+ -- None : -82.16
+ -- left : -321.56
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'right'})
+ -- forward : -859.92
+ -- right : 1460465639.50
+ -- None : 10.66
+ -- left : -557.60
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'right'})
+ -- forward : 0.54
+ -- right : 21.43
+ -- None : -2.80
+ -- left : -47.81
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'right'})
+ -- forward : 2.35
+ -- right : 89.98
+ -- None : 2.18
+ -- left : -0.33
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'right'})
+ -- forward : 2.53
+ -- right : 0.00
+ -- None : -6.53
+ -- left : -9.83
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'left'})
+ -- forward : 1674.38
+ -- right : 0.00
+ -- None : 1.70
+ -- left : 1.36
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'left'})
+ -- forward : -63.45
+ -- right : 19515.95
+ -- None : 2.61
+ -- left : -66.15
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'forward'})
+ -- forward : -95.75
+ -- right : -49.05
+ -- None : 8.65
+ -- left : -94.24
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'right'})
+ -- forward : 2.87
+ -- right : 60.50
+ -- None : -2.10
+ -- left : 0.52
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'left'})
+ -- forward : 0.04
+ -- right : 74.13
+ -- None : -6.19
+ -- left : -47.88
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': None})
+ -- forward : -877.69
+ -- right : 208.81
+ -- None : 6131835591373.34
+ -- left : -49842.10
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'right'})
+ -- forward : 2.67
+ -- right : 25.71
+ -- None : -6.35
+ -- left : 2.23
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': None})
+ -- forward : -11611.15
+ -- right : 8326.11
+ -- None : 33688450851789.20
+ -- left : -454825.50
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'right'})
+ -- forward : 3.79
+ -- right : 0.00
+ -- None : -6.52
+ -- left : -24.98
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': None})
+ -- forward : -340472505542114545242210304.00
+ -- right : 3631589918104550733239032825987108956001451539802832091426641504839959681106518911119666136714497849962995588069490425856.00
+ -- None : 155403585623517447132807168.00
+ -- left : -1778121084821333943219388416.00
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'right'})
+ -- forward : -19.95
+ -- right : 4.79
+ -- None : 0.00
+ -- left : 0.00
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'left'})
+ -- forward : 1.10
+ -- right : 698.12
+ -- None : -6.35
+ -- left : -10.31
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'left'})
+ -- forward : -4217.41
+ -- right : 5716.50
+ -- None : 1621336064299123968.00
+ -- left : -76690.13
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'left'})
+ -- forward : -19.84
+ -- right : 3.65
+ -- None : 148.66
+ -- left : -50.29
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'left'})
+ -- forward : -373.70
+ -- right : 4.77
+ -- None : 389155.54
+ -- left : -95.46
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'left'})
+ -- forward : 18.96
+ -- right : 503722.51
+ -- None : -975.74
+ -- left : -44259.82
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'left'})
+ -- forward : 734802.86
+ -- right : 543005.94
+ -- None : -1306217.75
+ -- left : 487304397346797696.00
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': None})
+ -- forward : 91.53
+ -- right : 0.65
+ -- None : 0.00
+ -- left : -47.47
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'forward'})
+ -- forward : 0.91
+ -- right : 3017.01
+ -- None : -33.42
+ -- left : -78.47
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'left'})
+ -- forward : 271602194992442.31
+ -- right : 419.19
+ -- None : 1032.06
+ -- left : 1481.56
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'forward'})
+ -- forward : -643.42
+ -- right : -82.16
+ -- None : 602.16
+ -- left : -164.82
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'forward'})
+ -- forward : -0.23
+ -- right : 9.57
+ -- None : -6.69
+ -- left : -24.59
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'right'})
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -10.12
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': None})
+ -- forward : 373080578840654208.00
+ -- right : 570850527379602220120071234417441204798654841286153669948586348312265683861355102208.00
+ -- None : 120908388229181280.00
+ -- left : 138777428519990722560.00
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'right'})
+ -- forward : 2.05
+ -- right : 153.72
+ -- None : 0.00
+ -- left : 0.00
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'left'})
+ -- forward : -4.60
+ -- right : 3.54
+ -- None : 0.00
+ -- left : 0.00
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'left'})
+ -- forward : 16010413607959854.00
+ -- right : 20354.89
+ -- None : -57060.65
+ -- left : 4293.88
+
+('forward', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'right'})
+ -- forward : -23012.58
+ -- right : 34411.06
+ -- None : 8343348567543740628992.00
+ -- left : -2736060.80
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'left'})
+ -- forward : -101.23
+ -- right : 1.20
+ -- None : 873802.40
+ -- left : -4378.66
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'right'})
+ -- forward : -97.65
+ -- right : 3.84
+ -- None : 8921608.88
+ -- left : -68.11
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'right'})
+ -- forward : 63.66
+ -- right : 21604.31
+ -- None : -81.90
+ -- left : 40.86
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': None})
+ -- forward : 256964154568935477633564678262128885266120704.00
+ -- right : 485797827.86
+ -- None : -83536228829.87
+ -- left : 3556325853.02
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': None})
+ -- forward : 3835.21
+ -- right : 1118384268430197120.00
+ -- None : -8027.59
+ -- left : 52393.16
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'left'})
+ -- forward : -4.83
+ -- right : 5.68
+ -- None : 168.77
+ -- left : -12.55
+
+('forward', {'light': 'green', 'oncoming': None, 'right': None, 'left': None})
+ -- forward : 14760529764812337823424349430254405277647320886619899476872685142191824413419959247269209160431788399457022997947423603545231361896125079061927079386078398307577568856652388238080591425766244220928.00
+ -- right : 5087810563330758204442778633511778622898176.00
+ -- None : -4383921670570363754737145640805859000844288.00
+ -- left : 70960820308526241228932351755768823808.00
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': None})
+ -- forward : -8799410331886689552695296.00
+ -- right : 15680218656747932352512.00
+ -- None : 1323736667716866512458868840202501047347593859900753466769675916564516273769976334669144501366351200256.00
+ -- left : -3919400547018744081181361307648.00
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'forward'})
+ -- forward : -412.57
+ -- right : -46.83
+ -- None : 3.23
+ -- left : -162.23
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'left'})
+ -- forward : -151.14
+ -- right : 17.51
+ -- None : 9407.58
+ -- left : -95.58
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'right'})
+ -- forward : 2.57
+ -- right : 19.77
+ -- None : 0.97
+ -- left : 1.63
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'forward'})
+ -- forward : 1.76
+ -- right : 23669.98
+ -- None : -12.36
+ -- left : -484.78
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'forward'})
+ -- forward : -26104.31
+ -- right : -29263.20
+ -- None : 923920109401190.50
+ -- left : -17485.14
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': None})
+ -- forward : -416.81
+ -- right : 182993.31
+ -- None : 19.91
+ -- left : -638.82
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'forward'})
+ -- forward : 13.18
+ -- right : 0.93
+ -- None : 2.48
+ -- left : 234850.25
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'right'})
+ -- forward : -19.50
+ -- right : 16.04
+ -- None : 0.00
+ -- left : -20.29
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'left'})
+ -- forward : 3.47
+ -- right : 1.03
+ -- None : 4.60
+ -- left : 17830.92
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': None})
+ -- forward : -3424.27
+ -- right : 1417270343.24
+ -- None : 348.25
+ -- left : -7720.97
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'right'})
+ -- forward : 0.00
+ -- right : 13.06
+ -- None : 0.51
+ -- left : -5.43
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': None})
+ -- forward : 3.21
+ -- right : 476463.87
+ -- None : -121.65
+ -- left : -323.85
+
+('left', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'right'})
+ -- forward : -6529443.88
+ -- right : 366415.10
+ -- None : 7795564758300413132800.00
+ -- left : -4261227.08
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'forward'})
+ -- forward : -20.13
+ -- right : 0.00
+ -- None : 20.74
+ -- left : -20.19
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'forward'})
+ -- forward : -94.56
+ -- right : 0.00
+ -- None : 24.80
+ -- left : -264.34
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'forward'})
+ -- forward : -133582.04
+ -- right : -45016.80
+ -- None : 31537399467832.70
+ -- left : -11596.51
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': None})
+ -- forward : -32147.36
+ -- right : 30164.42
+ -- None : 263617897587756928.00
+ -- left : -21949.28
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'right'})
+ -- forward : 6198456.72
+ -- right : 51.53
+ -- None : -269.71
+ -- left : -493.35
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': None})
+ -- forward : 13.20
+ -- right : 0.67
+ -- None : -53.95
+ -- left : -25.93
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': None})
+ -- forward : -3401.23
+ -- right : 5338877554661304.00
+ -- None : 493.26
+ -- left : -39570.24
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'forward'})
+ -- forward : 2.96
+ -- right : 383.31
+ -- None : -2.18
+ -- left : -10.01
+
+('forward', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'right'})
+ -- forward : 601544133593767739392.00
+ -- right : 7276.85
+ -- None : -135929.40
+ -- left : 644.30
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'left'})
+ -- forward : -4325.00
+ -- right : 174.77
+ -- None : 652778029774381824.00
+ -- left : -847.98
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'left'})
+ -- forward : 34.46
+ -- right : 25.76
+ -- None : -429.87
+ -- left : 27107.19
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'right'})
+ -- forward : -264.75
+ -- right : 3.08
+ -- None : 508.66
+ -- left : -650.41
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'right'})
+ -- forward : -24.16
+ -- right : 2109.52
+ -- None : 10.97
+ -- left : -65.82
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'right'})
+ -- forward : -39.15
+ -- right : 967.35
+ -- None : 5.08
+ -- left : -22.26
+
+('right', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'forward'})
+ -- forward : 279343346565.13
+ -- right : 126446665226331449053158552530963191675486208.00
+ -- None : -598226858069.07
+ -- left : 825232251111.04
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'left'})
+ -- forward : 0.71
+ -- right : 0.00
+ -- None : -2.97
+ -- left : -24.05
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'forward'})
+ -- forward : 480590.51
+ -- right : 6576.61
+ -- None : -16096821.37
+ -- left : 260550491601832492662784.00
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': None})
+ -- forward : -153235713684384186368.00
+ -- right : 106358603647947880871022210608623965454141123582033736122657782256820551680.00
+ -- None : 23358373503285588.00
+ -- left : -6240615034994316.00
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'forward'})
+ -- forward : -58937.65
+ -- right : -8853437.34
+ -- None : 6326569124009259008.00
+ -- left : -3385542.61
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'forward'})
+ -- forward : 1.86
+ -- right : 2211.69
+ -- None : -20.94
+ -- left : -323.27
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'left'})
+ -- forward : -42.59
+ -- right : 0.00
+ -- None : 624.46
+ -- left : -38.46
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'right'})
+ -- forward : 0.00
+ -- right : 24.31
+ -- None : 4.03
+ -- left : -4.88
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'forward'})
+ -- forward : -50.66
+ -- right : -80.53
+ -- None : 591.40
+ -- left : -413.77
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': None})
+ -- forward : 283.49
+ -- right : 66.73
+ -- None : 1148457845116.89
+ -- left : 163.86
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'left'})
+ -- forward : 2.65
+ -- right : 33.11
+ -- None : 0.00
+ -- left : 2.32
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'right'})
+ -- forward : 25.97
+ -- right : 455951.83
+ -- None : -77.03
+ -- left : 8.59
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'right'})
+ -- forward : -19.93
+ -- right : 0.69
+ -- None : 73.07
+ -- left : -19.63
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'right'})
+ -- forward : -5.23
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -19.82
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'forward'})
+ -- forward : 0.81
+ -- right : 69.19
+ -- None : 0.21
+ -- left : 0.00
+
+('right', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'forward'})
+ -- forward : -290407690758.06
+ -- right : -5698198354.27
+ -- None : 4209408861731008352760808381240673424113664.00
+ -- left : -25838297251.61
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': None})
+ -- forward : 166196391606433216.00
+ -- right : 74191.86
+ -- None : -4907.77
+ -- left : 5583.21
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'left'})
+ -- forward : 625.57
+ -- right : 221466391345930048.00
+ -- None : -27866.25
+ -- left : 365.87
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'forward'})
+ -- forward : -3432.07
+ -- right : -210.74
+ -- None : 32598.82
+ -- left : -645.25
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'right'})
+ -- forward : 2.36
+ -- right : 1.00
+ -- None : 1.19
+ -- left : 77.22
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'left'})
+ -- forward : -13.30
+ -- right : 12.00
+ -- None : 0.00
+ -- left : -95.61
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': None})
+ -- forward : -33919.93
+ -- right : 11744.48
+ -- None : 31804829432325188091904.00
+ -- left : -584546.82
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': None})
+ -- forward : 1204330291.50
+ -- right : 18.00
+ -- None : 66.09
+ -- left : 3.99
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'forward'})
+ -- forward : -20.23
+ -- right : -24.11
+ -- None : 12.55
+ -- left : -20.16
+
+('right', {'light': 'green', 'oncoming': None, 'right': None, 'left': None})
+ -- forward : 1862398296709000289535980627123394845993861120.00
+ -- right : 34048163551877923395956066602407737424580003982538880798475910046010302515149781515699202323053072126683056930730629075197111154540265973704049223445340282189514247106126404236961906688.00
+ -- None : -31136497565591949900002500172725302279532445696.00
+ -- left : 13861233669692125439710958879894388342784.00
+
+('right', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'right'})
+ -- forward : -1303120.49
+ -- right : 300246744121223396982784.00
+ -- None : 368034.94
+ -- left : -2828829.37
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'right'})
+ -- forward : -22.93
+ -- right : 85.87
+ -- None : 0.00
+ -- left : -12.77
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'right'})
+ -- forward : 1.28
+ -- right : 0.95
+ -- None : 0.29
+ -- left : 53.94
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'left'})
+ -- forward : -33485.78
+ -- right : 45835969244481.05
+ -- None : 1008.24
+ -- left : -74835.17
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'forward'})
+ -- forward : 182702044.26
+ -- right : 20.75
+ -- None : -991.53
+ -- left : -2561.03
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'forward'})
+ -- forward : 0.37
+ -- right : 48733954.78
+ -- None : -31.63
+ -- left : 1.76
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'right'})
+ -- forward : -4.73
+ -- right : 3.09
+ -- None : 0.00
+ -- left : -20.49
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'forward'})
+ -- forward : 6.71
+ -- right : 779959726.18
+ -- None : -178.49
+ -- left : -490.66
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'forward'})
+ -- forward : -978.84
+ -- right : -133.32
+ -- None : 15906.78
+ -- left : -163.21
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'forward'})
+ -- forward : -48.88
+ -- right : -2603.50
+ -- None : 26633.16
+ -- left : -1498.79
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': None})
+ -- forward : -727737042068853247311243659706368.00
+ -- right : 1128719485778215630990328111038464.00
+ -- None : 180288987872324108180494491597962019635783689751940322802128156403166219546929078738225902397727116567748765094799312969368580569450464684854803888603136.00
+ -- left : -1711060140232041776027662983102464.00
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'right'})
+ -- forward : -41.04
+ -- right : 6.50
+ -- None : 17247.16
+ -- left : -24.14
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': None})
+ -- forward : 630278587.43
+ -- right : 661724784.21
+ -- None : -105835409.51
+ -- left : 707668886958339723352451627202327347200.00
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'right'})
+ -- forward : 0.07
+ -- right : 0.00
+ -- None : 0.04
+ -- left : 2.40
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': None})
+ -- forward : -2275.57
+ -- right : 2398519.07
+ -- None : 31.10
+ -- left : -414.03
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'left'})
+ -- forward : -11593.86
+ -- right : 6089.37
+ -- None : 1822290680935361.00
+ -- left : -5180.86
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': None})
+ -- forward : -87886.87
+ -- right : 48.18
+ -- None : 803580438.96
+ -- left : -7637.94
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'right'})
+ -- forward : -4.94
+ -- right : 103.47
+ -- None : 0.00
+ -- left : -94.13
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'forward'})
+ -- forward : -37000.94
+ -- right : 971788981832337850368.00
+ -- None : -2123016.96
+ -- left : 70.60
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'left'})
+ -- forward : 10962.45
+ -- right : 4.34
+ -- None : 1.93
+ -- left : 5.45
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': None})
+ -- forward : 139402.23
+ -- right : 6355121609070200832.00
+ -- None : -179496.57
+ -- left : -13316.40
+
+('forward', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'left'})
+ -- forward : 1017876103849822990025259274536238440251392.00
+ -- right : 796792198.16
+ -- None : -1375904127.15
+ -- left : 59392742.54
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': None})
+ -- forward : -66.34
+ -- right : 1.23
+ -- None : 4939.18
+ -- left : -49.66
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': None})
+ -- forward : 3079.24
+ -- right : 412389792659490.88
+ -- None : 2093.52
+ -- left : 735.11
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'left'})
+ -- forward : 3.63
+ -- right : 8.57
+ -- None : 3.54
+ -- left : 76803.34
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'right'})
+ -- forward : -20.18
+ -- right : 0.31
+ -- None : 8.41
+ -- left : -50.55
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'left'})
+ -- forward : -65.77
+ -- right : 717.11
+ -- None : 17.38
+ -- left : -23.36
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'left'})
+ -- forward : -39.57
+ -- right : 2.82
+ -- None : 296.86
+ -- left : -13.12
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'left'})
+ -- forward : -1269.92
+ -- right : 488.33
+ -- None : 145757496506.13
+ -- left : -1292.13
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': None})
+ -- forward : -22585873.64
+ -- right : 531667.36
+ -- None : 582245223984162046251959844864.00
+ -- left : -38640486.22
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': None})
+ -- forward : 4.68
+ -- right : 33.79
+ -- None : -2.57
+ -- left : -207.69
+
+('left', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'forward'})
+ -- forward : -16787617013.84
+ -- right : -5812944676.71
+ -- None : 220677338392659716720619713183350784.00
+ -- left : -86204219680.15
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'right'})
+ -- forward : -12.69
+ -- right : 68.28
+ -- None : 0.49
+ -- left : 0.00
+
+('right', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'left'})
+ -- forward : -2856949362.02
+ -- right : 2073475600400819706117261545835588359290880.00
+ -- None : 311201118.68
+ -- left : -32328646102.96
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'forward'})
+ -- forward : -50.72
+ -- right : -25.04
+ -- None : 18.47
+ -- left : -162.79
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'forward'})
+ -- forward : -96.88
+ -- right : -24.40
+ -- None : 61.03
+ -- left : -94.85
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': None})
+ -- forward : 1531711962621619200.00
+ -- right : 706.09
+ -- None : 910.73
+ -- left : 1258.87
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': None})
+ -- forward : -382.22
+ -- right : 2.25
+ -- None : 3303723903824.42
+ -- left : -1268.43
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'left'})
+ -- forward : -162.29
+ -- right : 2.11
+ -- None : 336576.50
+ -- left : -418.01
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': None})
+ -- forward : -6565217.66
+ -- right : 125687.18
+ -- None : 419661908278183468178866176.00
+ -- left : -11420427.01
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'forward'})
+ -- forward : -50.61
+ -- right : -130.19
+ -- None : 2088.54
+ -- left : -19.56
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'right'})
+ -- forward : -12.93
+ -- right : 1.38
+ -- None : 205.25
+ -- left : -95.74
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': 'left'})
+ -- forward : 4.88
+ -- right : 98999377.87
+ -- None : -669.00
+ -- left : -1720.31
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': None})
+ -- forward : 203.53
+ -- right : 1170218233530.15
+ -- None : -36380.43
+ -- left : -208.10
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'right'})
+ -- forward : 448.43
+ -- right : 5.07
+ -- None : 0.51
+ -- left : -0.09
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'forward'})
+ -- forward : 55.81
+ -- right : 4.05
+ -- None : 2861.29
+ -- left : 0.00
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': None})
+ -- forward : -49272.85
+ -- right : 8630.93
+ -- None : 3549863545187895296.00
+ -- left : -2967.13
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'right'})
+ -- forward : -95.64
+ -- right : 6.48
+ -- None : 306.92
+ -- left : -163.43
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'forward'})
+ -- forward : 40.41
+ -- right : 425341.51
+ -- None : 3.55
+ -- left : 5.32
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'forward'})
+ -- forward : 7.35
+ -- right : 0.00
+ -- None : -2.72
+ -- left : 0.00
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'right'})
+ -- forward : 312.44
+ -- right : 0.28
+ -- None : 1.85
+ -- left : 4.41
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'right'})
+ -- forward : -551.96
+ -- right : 473553.46
+ -- None : 34.97
+ -- left : -255.44
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'left'})
+ -- forward : -40.60
+ -- right : 0.27
+ -- None : 51.25
+ -- left : -66.34
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'forward'})
+ -- forward : 1071275031199626952704.00
+ -- right : 55959.75
+ -- None : -78493.11
+ -- left : 4539.18
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'right'})
+ -- forward : 0.20
+ -- right : 5.08
+ -- None : -5.46
+ -- left : -25.20
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'left'})
+ -- forward : 132.46
+ -- right : 0.26
+ -- None : 0.00
+ -- left : -24.16
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'forward'})
+ -- forward : 1223.97
+ -- right : 1.86
+ -- None : -36.44
+ -- left : -25.48
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': None})
+ -- forward : 27444.36
+ -- right : 0.00
+ -- None : -32.93
+ -- left : -202.44
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'forward'})
+ -- forward : -50.57
+ -- right : -136.33
+ -- None : 94.55
+ -- left : 0.00
+
+('left', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'left'})
+ -- forward : -50088430963.38
+ -- right : 1474114.48
+ -- None : 9672554949713273663994717565951672320.00
+ -- left : -383058927.86
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'left'})
+ -- forward : 373.89
+ -- right : 0.62
+ -- None : -2.64
+ -- left : -84.15
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'left'})
+ -- forward : -264.33
+ -- right : 3.93
+ -- None : 8402.27
+ -- left : -417.04
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'forward'})
+ -- forward : -264.84
+ -- right : -128.03
+ -- None : 2888.28
+ -- left : -415.26
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': 'left'})
+ -- forward : -23.81
+ -- right : 3147.52
+ -- None : 2.39
+ -- left : -5.01
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'right'})
+ -- forward : -102.78
+ -- right : 241.66
+ -- None : 104060565.43
+ -- left : -25.56
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'forward'})
+ -- forward : 3472.96
+ -- right : 7.75
+ -- None : 0.00
+ -- left : -46.15
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'forward'})
+ -- forward : -164.28
+ -- right : -130.11
+ -- None : 5681.34
+ -- left : -418.77
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'forward'})
+ -- forward : -1502.75
+ -- right : -5824.22
+ -- None : 55491181214.78
+ -- left : -2280.95
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'left'})
+ -- forward : 3681.88
+ -- right : 0.00
+ -- None : 1.03
+ -- left : 3.39
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'forward'})
+ -- forward : -419.30
+ -- right : -48.59
+ -- None : 7813.33
+ -- left : -263.19
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'right'})
+ -- forward : -162.69
+ -- right : 2.64
+ -- None : 67319.02
+ -- left : -417.12
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'right'})
+ -- forward : -2828.59
+ -- right : 40.01
+ -- None : 428065807.12
+ -- left : -101.43
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'right'})
+ -- forward : -12.94
+ -- right : 1.25
+ -- None : 51.64
+ -- left : -13.12
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': None})
+ -- forward : 21309.62
+ -- right : 18.89
+ -- None : -127.77
+ -- left : -207.09
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': None})
+ -- forward : 318369403.43
+ -- right : 25209881472610876882373304718309918991450112.00
+ -- None : -49615999834.35
+ -- left : 78551397863.59
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'right'})
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 179.65
+ -- left : -93.05
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'forward'})
+ -- forward : -411.81
+ -- right : -206.74
+ -- None : 322842.43
+ -- left : -260.97
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'forward'})
+ -- forward : 0.01
+ -- right : 4.26
+ -- None : 0.78
+ -- left : 0.10
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'left'})
+ -- forward : 3.75
+ -- right : -0.11
+ -- None : -2.46
+ -- left : -25.38
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': None})
+ -- forward : -25476258841.65
+ -- right : 739241245865831356525769152868122624.00
+ -- None : 80298795.42
+ -- left : -2226241445.74
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'forward'})
+ -- forward : 2.62
+ -- right : 0.00
+ -- None : -2.72
+ -- left : 0.00
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': None})
+ -- forward : 36805185.16
+ -- right : 10.13
+ -- None : 30.55
+ -- left : 37.17
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'forward'})
+ -- forward : 13.28
+ -- right : 0.60
+ -- None : 9.54
+ -- left : 626852.33
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'left'})
+ -- forward : 2.39
+ -- right : 1.04
+ -- None : 8275.02
+ -- left : 16.50
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': None})
+ -- forward : -100.85
+ -- right : 3.13
+ -- None : 719.81
+ -- left : -19.97
+
+('forward', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'forward'})
+ -- forward : 24676347812674940227837697573118807175266828288.00
+ -- right : 1489178600050.05
+ -- None : -1356671059.65
+ -- left : 1284176103235.49
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': None})
+ -- forward : 836971468201165848576.00
+ -- right : 18935.52
+ -- None : -6727810.04
+ -- left : -337229.43
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'forward'})
+ -- forward : -5188.73
+ -- right : -132.56
+ -- None : 2289.45
+ -- left : -413.88
+
+('left', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'right'})
+ -- forward : 2394.40
+ -- right : 15575.47
+ -- None : -53813.40
+ -- left : 68670018794855120896.00
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': None})
+ -- forward : -39480.16
+ -- right : 2449.53
+ -- None : 4101152744453.55
+ -- left : -1009866.79
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'forward'})
+ -- forward : -3408.80
+ -- right : -1115.84
+ -- None : 4769809914.54
+ -- left : -3436.77
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'left'})
+ -- forward : -41.78
+ -- right : 0.81
+ -- None : 5.41
+ -- left : 0.00
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'forward'})
+ -- forward : -17531.50
+ -- right : -30003.81
+ -- None : 43230155802.66
+ -- left : -452193.09
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'right'})
+ -- forward : 5.60
+ -- right : 2.07
+ -- None : -5.47
+ -- left : 3133016.55
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'left'})
+ -- forward : 5151.82
+ -- right : 6.77
+ -- None : 1.46
+ -- left : 7.91
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': 'forward'})
+ -- forward : -95.03
+ -- right : -81.15
+ -- None : 4663.50
+ -- left : -161.74
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'left'})
+ -- forward : 4656534107649666449408.00
+ -- right : 252.10
+ -- None : -135677.33
+ -- left : 385.06
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'left'})
+ -- forward : -642.02
+ -- right : 24.21
+ -- None : 84500.14
+ -- left : -49.36
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'forward'})
+ -- forward : 1.79
+ -- right : 0.00
+ -- None : 0.00
+ -- left : -24.82
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'left'})
+ -- forward : 2.28
+ -- right : 0.00
+ -- None : -7.25
+ -- left : 0.00
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': 'right', 'left': None})
+ -- forward : -4545.04
+ -- right : 243821263637378.38
+ -- None : 35.68
+ -- left : -556.45
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'forward'})
+ -- forward : 12.57
+ -- right : 513248792532.99
+ -- None : 224.56
+ -- left : 43.16
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'forward'})
+ -- forward : -58934.20
+ -- right : -30168.38
+ -- None : 41991207330942.27
+ -- left : -11511.44
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': None})
+ -- forward : -6271583628.40
+ -- right : 394867388.61
+ -- None : 1192754264445908129522873892951682142838334685184.00
+ -- left : -6405729692999.61
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'right', 'left': 'forward'})
+ -- forward : -0.08
+ -- right : 4.94
+ -- None : 0.00
+ -- left : 0.00
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': 'forward'})
+ -- forward : -640.96
+ -- right : -204.33
+ -- None : 740350.34
+ -- left : -976.23
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'left'})
+ -- forward : 193.51
+ -- right : 1.57
+ -- None : -11.43
+ -- left : -24.79
+
+('right', {'light': 'red', 'oncoming': None, 'right': None, 'left': None})
+ -- forward : -37351762813502534348927902311856383890855123729317363712.00
+ -- right : 5800010695701517288313279817695080330897521508024844288.00
+ -- None : 4264780858706745659683190799551542279383145981051252291372917738339831714333499098180140230407747187898598423314384563864214263047908622957683187681848829803336149823245480359141627531279800243933694920603016057126950610284406095589224105110887145412285693952.00
+ -- left : -39684834777052212719718036732129639934184259259931295744.00
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': None})
+ -- forward : -4123456661556.97
+ -- right : 5898377640908.41
+ -- None : 371485784944436712812681353672711249562607550464.00
+ -- left : -1290414383167.41
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'left', 'left': 'left'})
+ -- forward : -40.89
+ -- right : 9418.45
+ -- None : 3.52
+ -- left : -236.59
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': None})
+ -- forward : 45447.71
+ -- right : 6.21
+ -- None : -35.19
+ -- left : -204.19
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': None})
+ -- forward : 159147.47
+ -- right : 60.90
+ -- None : -673.36
+ -- left : -494.65
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'left'})
+ -- forward : -95.15
+ -- right : 0.00
+ -- None : 947.05
+ -- left : -268.38
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': None})
+ -- forward : 6559440.43
+ -- right : 14.98
+ -- None : -599.80
+ -- left : -2564.79
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'forward'})
+ -- forward : 31474.40
+ -- right : 8.31
+ -- None : 8.86
+ -- left : 9.49
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'right'})
+ -- forward : -264.10
+ -- right : 3.84
+ -- None : 0.00
+ -- left : -49.50
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'left'})
+ -- forward : 145.04
+ -- right : 0.00
+ -- None : -10.64
+ -- left : -46.82
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'forward'})
+ -- forward : -0.39
+ -- right : 192.46
+ -- None : -2.17
+ -- left : -9.87
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'left'})
+ -- forward : -11.74
+ -- right : 75.74
+ -- None : 2.18
+ -- left : -42.27
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'left'})
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 3.86
+ -- left : 0.00
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'right'})
+ -- forward : 1.87
+ -- right : 6.86
+ -- None : -6.07
+ -- left : 0.00
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': 'forward'})
+ -- forward : -5120.16
+ -- right : -99266.53
+ -- None : 1477217194314.39
+ -- left : -88677.74
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'right'})
+ -- forward : 0.00
+ -- right : 0.00
+ -- None : 2.29
+ -- left : -20.08
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': None})
+ -- forward : -66.74
+ -- right : 11205295.14
+ -- None : 16.54
+ -- left : -150.40
+
+('right', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': None})
+ -- forward : 4.64
+ -- right : 8499.45
+ -- None : -120.43
+ -- left : -208.68
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': None})
+ -- forward : -1252873234902.98
+ -- right : 24934166528.78
+ -- None : 2704362652887230326554643253616187122280294621642752.00
+ -- left : -31061378764771.34
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': None})
+ -- forward : 20525030168841182731304960.00
+ -- right : 1396129877119578851614136894814801348608562786934592622327795033670093191146761292276352355344213824503808.00
+ -- None : 436052741875857171798818816.00
+ -- left : 19529970971272871193608192.00
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': None})
+ -- forward : 13060661974.22
+ -- right : 81.76
+ -- None : -411.34
+ -- left : -1112.21
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'right'})
+ -- forward : -33218.45
+ -- right : 120559764702.94
+ -- None : 364.62
+ -- left : -1307.54
+
+('right', {'light': 'green', 'oncoming': None, 'right': None, 'left': 'left'})
+ -- forward : 40333295.82
+ -- right : 1361037131806645410095237923958947840.00
+ -- None : -3217471451.76
+ -- left : 7175648905502.48
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'right'})
+ -- forward : 7.19
+ -- right : 3.45
+ -- None : -19.67
+ -- left : 2554110.73
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': 'left'})
+ -- forward : 6.97
+ -- right : 25706.99
+ -- None : 4.39
+ -- left : 8.99
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': 'forward', 'left': None})
+ -- forward : 264.09
+ -- right : 591802474073756.00
+ -- None : 2057.99
+ -- left : 43.33
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': 'right'})
+ -- forward : 28.42
+ -- right : 7.79
+ -- None : -395.62
+ -- left : 168928.61
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'right'})
+ -- forward : -50.88
+ -- right : 42.07
+ -- None : 4.22
+ -- left : -19.77
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'forward'})
+ -- forward : -49.49
+ -- right : 0.00
+ -- None : 32.86
+ -- left : -19.86
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'left'})
+ -- forward : -247.39
+ -- right : 28162.24
+ -- None : 34.80
+ -- left : -1867.45
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'left'})
+ -- forward : 0.00
+ -- right : 67.22
+ -- None : -2.67
+ -- left : -79.13
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'forward'})
+ -- forward : -297337.11
+ -- right : -8924.34
+ -- None : 2472851336106241.50
+ -- left : -197011.27
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': None})
+ -- forward : 1214919041.52
+ -- right : 70812670099386673003283668801834938422788096.00
+ -- None : -3194852273.79
+ -- left : 698135692.24
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': None})
+ -- forward : -41.16
+ -- right : 0.22
+ -- None : 4160.69
+ -- left : -20.46
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': None})
+ -- forward : -990.31
+ -- right : 2.93
+ -- None : 517050.90
+ -- left : -972.52
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'forward'})
+ -- forward : 32455.89
+ -- right : 28282167293910.34
+ -- None : 2436.41
+ -- left : 218.77
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'forward', 'left': 'left'})
+ -- forward : 431.18
+ -- right : 7.91
+ -- None : -12.34
+ -- left : -47.74
+
+('right', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'right'})
+ -- forward : 63.84
+ -- right : 434520692.75
+ -- None : 1525.52
+ -- left : 25.13
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'forward'})
+ -- forward : -3421640.02
+ -- right : -510911.42
+ -- None : 1454588245801650176.00
+ -- left : -303633.56
+
+('left', {'light': 'red', 'oncoming': 'left', 'right': 'left', 'left': None})
+ -- forward : -888173.20
+ -- right : 32958.07
+ -- None : 348841688160524992.00
+ -- left : -1941855.68
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'right', 'left': 'forward'})
+ -- forward : -20.23
+ -- right : -9.64
+ -- None : 1.19
+ -- left : -20.37
+
+('forward', {'light': 'red', 'oncoming': None, 'right': None, 'left': 'forward'})
+ -- forward : -25376498706.72
+ -- right : -8501533638.72
+ -- None : 40036023135086030106099779058532352.00
+ -- left : -662566121540.77
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': None, 'left': None})
+ -- forward : -9340347.52
+ -- right : 2222863.74
+ -- None : 110258064701686960498522718208.00
+ -- left : -132109192.47
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'right'})
+ -- forward : 9.86
+ -- right : -0.16
+ -- None : 0.00
+ -- left : 0.00
+
+('forward', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'forward'})
+ -- forward : 99510.71
+ -- right : 15.15
+ -- None : -189.70
+ -- left : 0.33
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'forward'})
+ -- forward : -19.78
+ -- right : -321.28
+ -- None : 14825.06
+ -- left : -416.85
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'forward'})
+ -- forward : 296621.23
+ -- right : 149845.03
+ -- None : -192292.52
+ -- left : 86237012396330998300672.00
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': None, 'left': None})
+ -- forward : 2976310830050.58
+ -- right : 15619569277334603043028739529275650146399611375804458115006464.00
+ -- None : -56882930952.07
+ -- left : -12377283697619008.00
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': None})
+ -- forward : -156.25
+ -- right : 4965467.95
+ -- None : 16.94
+ -- left : -155.11
+
+('forward', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': None})
+ -- forward : -22272.83
+ -- right : 967.05
+ -- None : 2408799539329427832832.00
+ -- left : -4269205.03
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'left'})
+ -- forward : -9865.21
+ -- right : 1154.67
+ -- None : 26410557602521395200.00
+ -- left : -51652.51
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': None})
+ -- forward : -22456.02
+ -- right : 16034452397321170944.00
+ -- None : 797226.96
+ -- left : -164533.25
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'right'})
+ -- forward : 12.50
+ -- right : 15.97
+ -- None : 4272458.77
+ -- left : 8.05
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'right'})
+ -- forward : -12.11
+ -- right : 6.01
+ -- None : 0.00
+ -- left : -5.09
+
+('right', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'forward'})
+ -- forward : -49.90
+ -- right : -80.69
+ -- None : 757.48
+ -- left : -161.17
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'left'})
+ -- forward : -1289.38
+ -- right : 629993.54
+ -- None : 12.42
+ -- left : -65.29
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': None, 'left': 'right'})
+ -- forward : 173.66
+ -- right : 2713871784404.75
+ -- None : 87.85
+ -- left : 152.00
+
+('forward', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'left'})
+ -- forward : -20.02
+ -- right : 30.70
+ -- None : 1.17
+ -- left : -94.40
+
+('left', {'light': 'red', 'oncoming': 'forward', 'right': 'right', 'left': 'right'})
+ -- forward : -12.40
+ -- right : 105.58
+ -- None : 0.00
+ -- left : 0.00
+
+('left', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'left'})
+ -- forward : 116.63
+ -- right : -0.06
+ -- None : -20.64
+ -- left : -25.00
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'forward', 'left': None})
+ -- forward : 407074060112844834225066882378829398016.00
+ -- right : 1002338380036.64
+ -- None : -24431963326.47
+ -- left : 42069996601.73
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'left'})
+ -- forward : -94.60
+ -- right : 1.38
+ -- None : 2646.31
+ -- left : -162.97
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'right'})
+ -- forward : 0.00
+ -- right : 44.85
+ -- None : 1.45
+ -- left : -49.50
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'forward', 'left': None})
+ -- forward : -5047250027.28
+ -- right : 14299326779940797282425321157558272.00
+ -- None : 1122702804.52
+ -- left : -293876860.90
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': None, 'left': 'forward'})
+ -- forward : -3420.47
+ -- right : -2591.24
+ -- None : 2331738001.74
+ -- left : -26333.52
+
+('forward', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': 'right'})
+ -- forward : 35.66
+ -- right : 0.00
+ -- None : 0.42
+ -- left : 0.48
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'right'})
+ -- forward : -12.38
+ -- right : 0.00
+ -- None : 17.76
+ -- left : -20.39
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': 'forward'})
+ -- forward : 296582.30
+ -- right : 27308778755373492523237376.00
+ -- None : -16889818.56
+ -- left : 114239.76
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'left'})
+ -- forward : -49045.27
+ -- right : 3053135041143.93
+ -- None : 528.67
+ -- left : -566.96
+
+('forward', {'light': 'red', 'oncoming': 'forward', 'right': 'forward', 'left': 'forward'})
+ -- forward : -19.65
+ -- right : -9.51
+ -- None : 158.81
+ -- left : -267.54
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'right', 'left': None})
+ -- forward : 28.88
+ -- right : 62.26
+ -- None : 8352110.13
+ -- left : 273.56
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'left'})
+ -- forward : 0.07
+ -- right : 22.63
+ -- None : -11.85
+ -- left : -83.17
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'left'})
+ -- forward : 9.95
+ -- right : 11.52
+ -- None : -256.16
+ -- left : 79239.15
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': 'forward', 'left': 'right'})
+ -- forward : 0.51
+ -- right : 131.73
+ -- None : 0.00
+ -- left : 0.00
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'forward'})
+ -- forward : -419.75
+ -- right : -81.59
+ -- None : 5654.86
+ -- left : -419.87
+
+('forward', {'light': 'red', 'oncoming': 'left', 'right': 'forward', 'left': 'forward'})
+ -- forward : -162.95
+ -- right : -45.89
+ -- None : 97517.46
+ -- left : -96.52
+
+('forward', {'light': 'green', 'oncoming': 'right', 'right': 'left', 'left': 'left'})
+ -- forward : 274.23
+ -- right : 2.07
+ -- None : -10.92
+ -- left : 0.00
+
+('right', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'left'})
+ -- forward : 249.25
+ -- right : 1.74
+ -- None : -84.38
+ -- left : -46.29
+
+('left', {'light': 'green', 'oncoming': 'right', 'right': None, 'left': 'right'})
+ -- forward : 1089.50
+ -- right : 1.65
+ -- None : -21.81
+ -- left : -47.99
+
+('right', {'light': 'red', 'oncoming': None, 'right': 'left', 'left': 'right'})
+ -- forward : -362.08
+ -- right : 142.88
+ -- None : 8050280.63
+ -- left : -381.09
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'left', 'left': 'right'})
+ -- forward : 81.80
+ -- right : 2.30
+ -- None : -5.89
+ -- left : -9.88
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': None})
+ -- forward : 2179.83
+ -- right : 2128.13
+ -- None : 37.95
+ -- left : 9003562351860.62
+
+('left', {'light': 'green', 'oncoming': None, 'right': 'right', 'left': 'forward'})
+ -- forward : 56988.14
+ -- right : 7.21
+ -- None : -82.03
+ -- left : 4.27
+
+('left', {'light': 'red', 'oncoming': None, 'right': 'right', 'left': 'right'})
+ -- forward : -99.15
+ -- right : 8.90
+ -- None : 0.52
+ -- left : -5.35
+
+('right', {'light': 'red', 'oncoming': 'left', 'right': None, 'left': 'right'})
+ -- forward : -14600.63
+ -- right : 122.04
+ -- None : 86559571588938.62
+ -- left : -251.02
+
+('left', {'light': 'green', 'oncoming': 'left', 'right': 'left', 'left': 'right'})
+ -- forward : 1.11
+ -- right : 1.70
+ -- None : -0.08
+ -- left : 130.41
+
+('right', {'light': 'green', 'oncoming': None, 'right': 'left', 'left': None})
+ -- forward : 1015719442.62
+ -- right : 2794872676889587108876591685017833503805960880128.00
+ -- None : -10315741376061.43
+ -- left : 3777939.91
+
+('forward', {'light': 'green', 'oncoming': 'forward', 'right': 'right', 'left': 'forward'})
+ -- forward : 3.95
+ -- right : -0.03
+ -- None : -2.40
+ -- left : -10.19
+
+('left', {'light': 'red', 'oncoming': 'right', 'right': 'left', 'left': 'left'})
+ -- forward : -4.97
+ -- right : 0.00
+ -- None : 7.15
+ -- left : -19.81
+
+('right', {'light': 'red', 'oncoming': 'right', 'right': 'forward', 'left': 'right'})
+ -- forward : -19.91
+ -- right : 0.75
+ -- None : 0.00
+ -- left : -48.93
+
